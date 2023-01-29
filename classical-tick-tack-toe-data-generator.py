@@ -88,7 +88,8 @@ def displayGrid(grid):
   for i in range(2, -1, -1):
     str = ""
     for j in range(3):
-      v = grid[i * 3 + j]
+      v = grid[i * 3 + j]for a, b in zip(pred, test_labels):
+    print(a, b)
       str += ("x" if v == 1 else ("o" if v == -1 else "-"))
     #print(str) # this line slows down output a lot without actually printing anything
 
@@ -110,53 +111,54 @@ for grid, winner in data:
 
 
 
+
 # print("Play by entering the number of cell to put X in.")
 # done = False
 # grid = np.zeros(9)
 #
 # while not done:
-#   print('\nAvailable moves:', get_available_actions(grid))
-#   cellStr = input("enter your move: ")
-#   cell = int(cellStr)
-#   if(grid[cell] != 0):
-#     print(cellStr, ' is taken! Try again')
-#     continue
-#   grid[cell] = 1
-#   hash = get_grid_hash(grid)
-#   print('You:')
-#   displayGrid(grid)
-#   winner = has_winner(grid)
-#   if winner != 0:
-#     print('*** YOU WON ***')
-#     done = True
-#     break
-#   if is_full(grid):
-#     done = True
-#     print('DRAW')
-#     break
+#     print('\nAvailable moves:', get_available_actions(grid))
+#     cellStr = input("enter your move: ")
+#     cell = int(cellStr)
+#     if(grid[cell] != 0):
+#         print(cellStr, ' is taken! Try again')
+#         continue
+#     grid[cell] = 1
+#     hash = get_grid_hash(grid)
+#     print('You:')
+#     displayGrid(grid)
+#     winner = has_winner(grid)
+#     if winner != 0:
+#         print('*** YOU WON ***')
+#         done = True
+#         break
+#     if is_full(grid):
+#         done = True
+#         print('DRAW')
+#         break
 #
-#   my_action = get_available_actions(grid)[0]
-#   is_winning = False
-#   for action in get_available_actions(grid):
-#       cgrid = grid.copy()
-#       cgrid[action] = -1
-#       if get_winner(cgrid, 1) == -1:
-#         my_action = action
-#         is_winning = True
-#
-#   if not is_winning:
-#       for action in get_available_actions(grid):
-#           cgrid = grid.copy()
-#           cgrid[action] = -1
-#           if get_winner(cgrid, 1) == 0:
+#     my_action = get_available_actions(grid)[0]
+#     is_winning = False
+#     for action in get_available_actions(grid):
+#         cgrid = grid.copy()
+#         cgrid[action] = -1
+#         if get_winner(cgrid, 1) == -1:
 #             my_action = action
+#             is_winning = True
 #
-#   grid[my_action] = -1
-#   hash = get_grid_hash(grid)
-#   print("Algorithm:")
-#   displayGrid(grid)
-#   winner = has_winner(grid)
-#   if winner != 0:
-#     print('--- YOU LOST ---')
-#     done = True
-#     break
+#     if not is_winning:
+#         for action in get_available_actions(grid):
+#             cgrid = grid.copy()
+#             cgrid[action] = -1
+#             if get_winner(cgrid, 1) == 0:
+#                 my_action = action
+#
+#     grid[my_action] = -1
+#     hash = get_grid_hash(grid)
+#     print("Algorithm:")
+#     displayGrid(grid)
+#     winner = has_winner(grid)
+#     if winner != 0:
+#         print('--- YOU LOST ---')
+#         done = True
+#         break
