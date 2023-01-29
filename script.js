@@ -120,56 +120,54 @@ function checkTie() {
 	return false;
 }
 
-// // Minimax Algorithm
-// function minimax(mimic_board, player) {
-// 	console.log(mimic_board, player);
+// Minimax Algorithm
+function minimax(mimic_board, player) {
+	let openSpots = emptySquares();
 
-// 	let openSpots = emptySquares();
+	if (checkWinner(mimic_board, HUMAN)) {
+		return {score: -10};
+	} else if (checkWinner(mimic_board, AI)) {
+		return {score: 10};
+	} else if (openSpots.length === 0) {
+		return {score: 0};
+	}
+	let moves = [];
+	for (let i = 0; i < openSpots.length; i++) {
+		let move = {};
+		move.index = mimic_board[openSpots[i]];
+		mimic_board[openSpots[i]] = player;
 
-// 	if (checkWinner(mimic_board, HUMAN)) {
-// 		return {score: -10};
-// 	} else if (checkWinner(mimic_board, AI)) {
-// 		return {score: 10};
-// 	} else if (openSpots.length === 0) {
-// 		return {score: 0};
-// 	}
-// 	let moves = [];
-// 	for (let i = 0; i < openSpots.length; i++) {
-// 		let move = {};
-// 		move.index = mimic_board[openSpots[i]];
-// 		mimic_board[openSpots[i]] = player;
+		if (player == AI) {
+			let result = minimax(mimic_board, HUMAN);
+			move.score = result.score;
+		} else {
+			let result = minimax(mimic_board, AI);
+			move.score = result.score;
+		}
 
-// 		if (player == AI) {
-// 			let result = minimax(mimic_board, HUMAN);
-// 			move.score = result.score;
-// 		} else {
-// 			let result = minimax(mimic_board, AI);
-// 			move.score = result.score;
-// 		}
+		mimic_board[openSpots[i]] = move.index;
 
-// 		mimic_board[openSpots[i]] = move.index;
+		moves.push(move);
+	}
 
-// 		moves.push(move);
-// 	}
+	let bestMove;
+	if(player === AI) {
+		let bestScore = -Infinity;
+		for(let i = 0; i < moves.length; i++) {
+			if (moves[i].score > bestScore) {
+				bestScore = moves[i].score;
+				bestMove = i;
+			}
+		}
+	} else {
+		let bestScore = Infinity;
+		for(var i = 0; i < moves.length; i++) {
+			if (moves[i].score < bestScore) {
+				bestScore = moves[i].score;
+				bestMove = i;
+			}
+		}
+	}
 
-// 	let bestMove;
-// 	if(player === AI) {
-// 		let bestScore = -Infinity;
-// 		for(let i = 0; i < moves.length; i++) {
-// 			if (moves[i].score > bestScore) {
-// 				bestScore = moves[i].score;
-// 				bestMove = i;
-// 			}
-// 		}
-// 	} else {
-// 		let bestScore = Infinity;
-// 		for(var i = 0; i < moves.length; i++) {
-// 			if (moves[i].score < bestScore) {
-// 				bestScore = moves[i].score;
-// 				bestMove = i;
-// 			}
-// 		}
-// 	}
-
-// 	return moves[bestMove];
-// }
+	return moves[bestMove];
+}
