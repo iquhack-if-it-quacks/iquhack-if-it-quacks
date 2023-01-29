@@ -37,9 +37,7 @@ function turnClick(square) {
     if (typeof board[square.target.id] == 'number') {
         turn(square.target.id, HUMAN)
         if (!checkTie()) {
-			setTimeout(function() {
-				turn(bestSpot(), AI);
-			}, 400);
+			bestSpot().then(res=>turn(res, AI))
         }
     }
 }
@@ -98,7 +96,15 @@ function emptySquares() {
 
 // AI uses minimax algorithm to find the best spot
 function bestSpot() {
-	return minimax(board, AI).index;
+	const requestOptions = {
+		method: 'POST',
+		headers: { 'Content-Type': 'application/json' },
+		body: JSON.stringify({ turn: AI, board: board })
+	};
+	return fetch('/get_move', requestOptions)
+		.then(res=>res.text())
+		.then(res=>(parseInt(res)))
+	// return minimax(board, AI).index;
 }
 
 // Checks for any tie
