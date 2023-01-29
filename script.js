@@ -27,7 +27,7 @@ function startGame() {
     board = Array.from(Array(9).keys());
     for (var i = 0; i < cells.length; i++) {
         cells[i].innerText = '';
-        cells[i].style.removeProperty('background-color');
+        cells[i].style.removeProperty('border-color');
         cells[i].addEventListener('click', turnClick, false);
     }
 }
@@ -74,7 +74,7 @@ function checkWinner(mimic_board, player) {
 // Stops the game and outputs result
 function gameOver(winner) {
     for (let i of winCombos[winner.i]) {
-        document.getElementById(i).style.backgroundColor =
+        document.getElementById(i).style.borderColor =
             winner.player == HUMAN ? "blue" : "red";
     }
     for (var i = 0; i < cells.length; i++) {
@@ -111,7 +111,7 @@ function bestSpot() {
 function checkTie() {
 	if (emptySquares().length == 0) {
 		for (var i = 0; i < cells.length; i++) {
-			cells[i].style.backgroundColor = "green";
+			cells[i].style.borderColor = "green";
 			cells[i].removeEventListener('click', turnClick, false);
 		}
 		declareWinner("Tie Game!")

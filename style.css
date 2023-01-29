@@ -3,10 +3,11 @@ body{
 }
 
 h2 {
-    font-size: 400%;
+    font-size: 40px;
     text-align: center;
     color: #a6a6b6;
     font-family: "Roboto", sans-serif;
+    font-weight: 100;
     letter-spacing: 1px;
 }
 
@@ -32,7 +33,7 @@ table {
     text-align: center;
     line-height: 100px;
     font-family: "Roboto", sans-serif;
-    font-weight: 300;
+    font-weight: 100;
     font-size: 40px;
     margin: 10px;
  }
@@ -53,36 +54,44 @@ table tr td:last-child {
     border-right: 0;
 }
 
+.bottomWrapper {
+    margin: 0 auto;
+
+}
+
 button {
-    margin: auto;
-    border: none;
-    color: white;
-    padding: 15px 32px;
+    /*margin-top: 100px;*/
+    margin: 0 auto;
+    margin-top: 50px;
+    color: #a6a6b6;
+    background-color: transparent;
     text-align: center;
-    text-decoration: none;
-    display: inline-block;
     font-size: 16px;
-    transition: 0.3s;
+    transition: 0.6s;
     cursor: pointer;
+    display: block;
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    letter-spacing: 1px;
+    border: 0px solid black;
 }
 
 button:hover {
-    background-color: rgb(255,255,255);
-    color: #4CAF50;
-    border: 2px solid #4CAF50;
-  }
+    color: #6662ff;
+    letter-spacing: 4px;
+}
 
 .endgame {
     display: none;
     width: 20%;
-    height: 20%;
-    background-color: rgba(0, 0, 0, 0.8);
-    margin: 8% 20% 20% 39%;
-    position: absolute;
+    margin: 0 auto;
+    background-color: transparent;
     text-align: center;
-    border-radius: 5px;
-    color: rgb(255,255,255);
-    font-size: 2em;
+    color: #a6a6b6;
+    font-size: 26px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    letter-spacing: 1px;
   }
 
   .text {
