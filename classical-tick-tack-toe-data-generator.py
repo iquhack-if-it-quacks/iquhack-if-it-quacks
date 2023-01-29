@@ -88,9 +88,10 @@ def displayGrid(grid):
   for i in range(2, -1, -1):
     str = ""
     for j in range(3):
-      v = grid[i * 3 + j]
-      str += ("x" if v == 1 else ("o" if v == -1 else "-"))
-    #print(str) # this line slows down output a lot without actually printing anything
+        v = grid[i * 3 + j]
+        str += ("x" if v == 1 else ("o" if v == -1 else "-"))
+    # this line slows down output a lot without actually printing anything
+    #print(str)
 
 
 data = []
