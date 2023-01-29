@@ -1,15 +1,22 @@
 import pickle
 import random
-
 import numpy as np
+import sys
+
 from flask import Flask, render_template, request
 from helper import *
 
 app = Flask(__name__, template_folder='.', static_url_path='/', static_folder='.')
 
+use_quantum_method = len(sys.argv) > 1 and sys.argv[1] == 'quantum'
+
+if use_quantum_method:
+    model = pickle.load(open("./quantum-svc-model.pkl", 'rb'))
+else:
+    model = pickle.load(open("./classical-svc-model.pkl", 'rb'))
 # model1 = pickle.load(open("./quantum-svc-model01.pkl", 'rb'))
-# model = pickle.load(open("./quantum-svc-model.pkl", 'rb'))
-model = pickle.load(open("./classical-svc-model.pkl", 'rb'))
+
+print(f'using {"quantum" if use_quantum_method else "classical"} model')
 
 
 @app.route("/")
@@ -36,7 +43,7 @@ def get_move():
         res = model.predict(np.array([cgrid]))[0]
         print(cgrid, action, res)
         if res == -1:
-            print('found win')
+            # print('found win')
             return str(action)  # we win
         if res == 0:
             op_not_win_move = str(action)
@@ -45,7 +52,7 @@ def get_move():
         #     return str(action)
     if op_not_win_move is not None:
         return op_not_win_move
-    print('didnt find')
+    # print('didnt find')
     return str(random.choice(get_available_actions(grid)))
 
 
