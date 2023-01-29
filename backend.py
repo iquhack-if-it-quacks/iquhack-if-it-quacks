@@ -24,13 +24,19 @@ def get_move():
             grid.append(0)
         else:
             grid.append(1 if x == req_turn else -1)
+
+    op_not_win_move = None
     for action in get_available_actions(grid):
         cgrid = grid.copy()
         cgrid[action] = 1
-        cgrid = neutralize_grid(grid, -1)
-        op_wins = model.predict([cgrid])[0]
-        if not op_wins:
-            return str(action)
+        cgrid = neutralize_grid(cgrid, -1)
+        res = model.predict([cgrid])[0]
+        if res == -1:
+            return str(action)  # we win
+        if res == 0:
+            op_not_win_move = str(action)
+    if op_not_win_move is not None:
+        return op_not_win_move
     return str(random.choice(get_available_actions(grid)))
 
 

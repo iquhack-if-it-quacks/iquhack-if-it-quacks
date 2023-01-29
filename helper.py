@@ -56,4 +56,4 @@ def displayGrid(grid):
 
 
 def neutralize_grid(grid, turn):
-    return [x * turn for x in grid]
+    return [int(x * turn) for x in grid]
