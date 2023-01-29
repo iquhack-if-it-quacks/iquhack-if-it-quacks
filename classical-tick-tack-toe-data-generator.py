@@ -1,63 +1,12 @@
 import random
 
 import numpy as np
-
+from helper import *
 
 winners = {}
 
 
-def has_winner(grid):
-    for i in range(3):
-        sum = grid[i * 3] + grid[i * 3 + 1] + grid[i * 3 + 2]
-        if (sum == 3 or sum == -3): return sum / 3
-
-    for i in range(3):
-        sum = grid[i] + grid[i + 3] + grid[i + 6]
-        if (sum == 3 or sum == -3): return sum / 3
-
-    sum = grid[0] + grid[4] + grid[8]
-    if (sum == 3 or sum == -3): return sum / 3
-    sum = grid[2] + grid[4] + grid[6]
-    if (sum == 3 or sum == -3): return sum / 3
-
-    return 0
-
-
-def is_player_winner(player, grid):
-    winner = has_winner(grid)
-    if winner == 0: return 0
-    if winner == 1 and player == 0: return 1  # player X won, he gets 1
-    if winner == -1 and player == 1: return 1  # player O won, he gets 1
-    return -1
-
-
-def is_full(grid):
-    for v in grid:
-        if v == 0: return False
-    return True
-
-
-def get_grid_hash(grid):
-    hash = ""
-    for v in grid:
-        hash += "x" if v == 1 else ("o" if v == -1 else "-")
-    return hash
-
-
-def get_available_actions(grid):
-    actions = []
-    for i, v in enumerate(grid):
-        if v == 0:
-            actions.append(i)
-    return actions
-
-
-count = 0
-
-
 def get_winner(grid, turn):
-    global count
-    count += 1
     hsh = get_grid_hash(grid), turn
     if hsh in winners:
         return winners[hsh]
@@ -84,31 +33,21 @@ def get_winner(grid, turn):
     return -turn
 
 
-def displayGrid(grid):
-  for i in range(2, -1, -1):
-    str = ""
-    for j in range(3):
-      v = grid[i * 3 + j]
-      str += ("x" if v == 1 else ("o" if v == -1 else "-"))
-    print(str)
-
-
 data = []
 
 for i in range(1000):
     grid = np.zeros(9)
     turn = random.choice((-1, 1))
     while has_winner(grid) == 0 and len(get_available_actions(grid)):
-        data.append((get_grid_hash(grid), get_winner(grid, turn) == turn))
+        ngrid = neutralize_grid(get_grid_hash(grid), turn)
+        nwinner = get_winner(grid, turn) == turn
+        data.append((ngrid, nwinner))
         action = random.choice(get_available_actions(grid))
         grid[action] = turn
         turn *= -1
 
 for grid, winner in data:
     print(grid, winner)
-
-
-
 
 # print("Play by entering the number of cell to put X in.")
 # done = False

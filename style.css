@@ -1,12 +1,33 @@
 body{
-    background-color: white;
+    background-color: #050516;
 }
 
-h2 {
+h1 {
     font-size: 400%;
     text-align: center;
+    color: #ffffff;
 }
 
+.container {
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: 33% 33% 33%;
+    max-width: 300px;
+}
+
+.cell {
+    border: 1px solid white;
+    min-width: 100px;
+    min-height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    cursor: pointer;
+}
+
+/*
 table {
      border-collapse: collapse;
      position: absolute;
@@ -14,7 +35,7 @@ table {
  }
  
  td {
-     border: 2px solid rgb(0,0,0);
+     border: 2px solid #ffffff;
      height: 100px;
      width: 100px;
      text-align: center;
@@ -39,6 +60,7 @@ table tr td:first-child {
 table tr td:last-child {
     border-right: 0;
 }
+*/
 
 button {
     margin: 34% 10% 10% 45.5%;
