@@ -37,9 +37,10 @@ function turnClick(square) {
     if (typeof board[square.target.id] == 'number') {
         turn(square.target.id, HUMAN)
         if (!checkTie()) {
-			setTimeout(function() {
-				turn(bestSpot(), AI);
-			}, 400);
+        	bestSpot().then(res=>turn(rez, AI))
+			// setTimeout(function() {
+			// 	turn(bestSpot(), AI);
+			// }, 400);
         }
     }
 }
@@ -98,7 +99,26 @@ function emptySquares() {
 
 // AI uses minimax algorithm to find the best spot
 function bestSpot() {
-	return minimax(board, AI).index;
+	// return minimax(board, AI).index;
+	return fetch("/get_move", {
+	    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+	    mode: 'cors', // no-cors, *cors, same-origin
+	    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+	    credentials: 'same-origin', // include, *same-origin, omit
+	    headers: {
+	      'Content-Type': 'application/json'
+	      // 'Content-Type': 'application/x-www-form-urlencoded',
+	    },
+	    redirect: 'follow', // manual, *follow, error
+	    referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+	    body: JSON.stringify({"board":board, "turn":AI}) // body data type must match "Content-Type" header
+	    }).then(function (response)) {
+			return response.json();
+		}
+		.then(function (json)) {
+			move = json.move;
+			return move;
+		}	
 }
 
 // Checks for any tie
@@ -114,54 +134,56 @@ function checkTie() {
 	return false;
 }
 
-// Minimax Algorithm
-function minimax(mimic_board, player) {
-	let openSpots = emptySquares();
+// // Minimax Algorithm
+// function minimax(mimic_board, player) {
+// 	console.log(mimic_board, player);
 
-	if (checkWinner(mimic_board, HUMAN)) {
-		return {score: -10};
-	} else if (checkWinner(mimic_board, AI)) {
-		return {score: 10};
-	} else if (openSpots.length === 0) {
-		return {score: 0};
-	}
-	let moves = [];
-	for (let i = 0; i < openSpots.length; i++) {
-		let move = {};
-		move.index = mimic_board[openSpots[i]];
-		mimic_board[openSpots[i]] = player;
+// 	let openSpots = emptySquares();
 
-		if (player == AI) {
-			let result = minimax(mimic_board, HUMAN);
-			move.score = result.score;
-		} else {
-			let result = minimax(mimic_board, AI);
-			move.score = result.score;
-		}
+// 	if (checkWinner(mimic_board, HUMAN)) {
+// 		return {score: -10};
+// 	} else if (checkWinner(mimic_board, AI)) {
+// 		return {score: 10};
+// 	} else if (openSpots.length === 0) {
+// 		return {score: 0};
+// 	}
+// 	let moves = [];
+// 	for (let i = 0; i < openSpots.length; i++) {
+// 		let move = {};
+// 		move.index = mimic_board[openSpots[i]];
+// 		mimic_board[openSpots[i]] = player;
 
-		mimic_board[openSpots[i]] = move.index;
+// 		if (player == AI) {
+// 			let result = minimax(mimic_board, HUMAN);
+// 			move.score = result.score;
+// 		} else {
+// 			let result = minimax(mimic_board, AI);
+// 			move.score = result.score;
+// 		}
 
-		moves.push(move);
-	}
+// 		mimic_board[openSpots[i]] = move.index;
 
-	let bestMove;
-	if(player === AI) {
-		let bestScore = -Infinity;
-		for(let i = 0; i < moves.length; i++) {
-			if (moves[i].score > bestScore) {
-				bestScore = moves[i].score;
-				bestMove = i;
-			}
-		}
-	} else {
-		let bestScore = Infinity;
-		for(var i = 0; i < moves.length; i++) {
-			if (moves[i].score < bestScore) {
-				bestScore = moves[i].score;
-				bestMove = i;
-			}
-		}
-	}
+// 		moves.push(move);
+// 	}
 
-	return moves[bestMove];
-}
+// 	let bestMove;
+// 	if(player === AI) {
+// 		let bestScore = -Infinity;
+// 		for(let i = 0; i < moves.length; i++) {
+// 			if (moves[i].score > bestScore) {
+// 				bestScore = moves[i].score;
+// 				bestMove = i;
+// 			}
+// 		}
+// 	} else {
+// 		let bestScore = Infinity;
+// 		for(var i = 0; i < moves.length; i++) {
+// 			if (moves[i].score < bestScore) {
+// 				bestScore = moves[i].score;
+// 				bestMove = i;
+// 			}
+// 		}
+// 	}
+
+// 	return moves[bestMove];
+// }
