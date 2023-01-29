@@ -5,31 +5,36 @@ body{
 h2 {
     font-size: 400%;
     text-align: center;
-    color: white;
+    color: #a6a6b6;
+    font-family: "Roboto", sans-serif;
+    letter-spacing: 1px;
 }
 
 table {
-    margin: 0 auto;
+    margin: auto;
     border-collapse: collapse;
-    position: absolute;
-    margin: 2% 10% 10% 37%;
+    min-width: 300px;
  }
  
  td {
     cursor: pointer;
+    vertical-align: middle;
  }
 
  .cell {
     border-radius: 40px;
-    vertical-align: middle;
     border: 1px solid #1b2632;
     background-color: #282850;
-    border-radius: 40px;
+    color: #a6a6b6;
+    border-radius: 50px;
     height: 100px;
-    width: 100px;
+    width: 120px;
     text-align: center;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 65px;
+    line-height: 100px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-size: 40px;
+    margin: 10px;
  }
 
  table tr:first-child td {
@@ -49,8 +54,7 @@ table tr td:last-child {
 }
 
 button {
-    margin: 34% 10% 10% 45.5%;
-    background-color: #4CAF50; 
+    margin: auto;
     border: none;
     color: white;
     padding: 15px 32px;
