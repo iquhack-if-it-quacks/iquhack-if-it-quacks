@@ -103,7 +103,7 @@ function bestSpot() {
 	};
 	return fetch('/get_move', requestOptions)
 		.then(res=>res.text())
-		.then(res=>(parseInt(res)))
+		.then(res=>{console.log("selected", res); return parseInt(res)})
 	// return minimax(board, AI).index;
 }
 
