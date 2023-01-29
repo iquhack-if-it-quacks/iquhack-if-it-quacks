@@ -1,7 +1,5 @@
-# iQuHACK 2023: If It Quacks Like a Duck, If It Hacks Like a Duck...
-
-## Name of the Project 
-Tic Tac Toe Game with Quantum Kernel Machine Learning
+# iQuHACK 2023: Tic Tac Toe Quantum Machine Learning Solver
+## Group Name: If It Quacks Like a Duck, If It Hacks Like a Duck...
 
 ## Overview 
 Tic Tac Toe is a fun game in which two players alternate plays to try and fill a row, column, or diagonal with three O's or three X's drawn in the spaces of a grid of nine squares. In case you cannot find a friend to play with you, we created an AI to play against you. 
@@ -18,7 +16,7 @@ Before running our code: install the following libraries:
 Note: we trained two models in different Jupitor notebooks, and then the models are loaded into the server to respond to API call from the front-end.
 
 ## Methods 
-Our goal in iQuHACK was to learn more about quantum classification algorithms, and to realize this goal, we chose to study the applications of quantum classification using tic tac toe. However, before we started using quantum algorithms, we had to ensure that classification algorithms would be appropriate in solving tic tac toe, so we began by using classical classification algorithms to have a baseline. We used an algorithmic method to create a dataset of game state and their corresponding results. Then, we trained Quantum Support Vector Classifier (QSVC) to detect winning and losing game states. 
+Our goal in iQuHACK was to learn more about quantum classification algorithms, to realize this goal, we studied the quantum classification applications of tic tac toe. However, before we started using quantum algorithms, we had to ensure that classification algorithms would be appropriate in solving tic tac toe, so we began by using classical classification algorithms to have a baseline. We used an algorithmic method to create a dataset of game state and their corresponding results. Then, we trained Quantum Support Vector Classifier (QSVC) to detect winning and losing game states. 
 
 ![Demo](https://github.com/iquhack-if-it-quacks/iquhack-if-it-quacks/demo.gif)
 
