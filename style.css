@@ -1,27 +1,35 @@
 body{
-    background-color: white;
+    background-color: #06061a;
 }
 
 h2 {
     font-size: 400%;
     text-align: center;
+    color: white;
 }
 
 table {
-     border-collapse: collapse;
-     position: absolute;
-     margin: 2% 10% 10% 37%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    position: absolute;
+    margin: 2% 10% 10% 37%;
  }
  
  td {
-     border: 2px solid rgb(0,0,0);
-     height: 100px;
-     width: 100px;
-     text-align: center;
-     vertical-align: middle;
-     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-     font-size: 65px;
-     cursor: pointer;
+    cursor: pointer;
+ }
+
+ .cell {
+    border-radius: 40px;
+    vertical-align: middle;
+    border: 1px solid #1b2632;
+    background-color: #282850;
+    border-radius: 40px;
+    height: 100px;
+    width: 100px;
+    text-align: center;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 65px;
  }
 
  table tr:first-child td {
@@ -78,4 +86,3 @@ button:hover {
       font-size: 100%;
       font-weight: 600;
   }
-  
