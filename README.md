@@ -1,4 +1,4 @@
-# iquhack: If It Quacks Like a Duck, If It Hacks Like a Duck...
+# iQuHACK: If It Quacks Like a Duck, If It Hacks Like a Duck...
 
 ## Name of the Project: 
 Tic Tac Toe Game with Quantum Kernel Machine Learning
@@ -8,7 +8,7 @@ Tic Tac Toe is a fun game in which two players alternate plays to try and fill a
 
 Our AI uses a quantum machine to maximize its playing ability. You might think you know how to play tic tac toe, but you will be bamboozled by the higher level plays of our machine.
 
-## Installation instruction:  
+## Installation Instruction:  
 Before running our code: install the following libraries: 
 - qiskit
 - scikit-learn
