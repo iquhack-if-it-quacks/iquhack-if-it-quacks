@@ -18,7 +18,8 @@ Note: we trained two models in different Jupitor notebooks, and then the models 
 ## Methods 
 Our goal in iQuHACK was to learn more about quantum classification algorithms, to realize this goal, we studied the quantum classification applications of tic tac toe. However, before we started using quantum algorithms, we had to ensure that classification algorithms would be appropriate in solving tic tac toe, so we began by using classical classification algorithms to have a baseline. We used an algorithmic method to create a dataset of game state and their corresponding results. Then, we trained Quantum Support Vector Classifier (QSVC) to detect winning and losing game states. 
 
-![Demo](https://github.com/iquhack-if-it-quacks/iquhack-if-it-quacks/demo.gif)
+![Demo](https://github.com/iquhack-if-it-quacks/iquhack-if-it-quacks/blob/main/demo.gif)
+
 
 ## Challenges
 We started by training a classical model to test the effectiveness of classification algorithms in modeling a tic tac toe game. After this step, we began implementing the Quantum Support Vector Classifier, but this algorithm only operates as a binary classifier, making it difficult to transition from our classical multiclass classifier to quantum computing algorithms. We approached this challenge by adding two quantum binary classifiers, although this reduced the accuracy of our quantum model.
